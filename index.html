@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>5StarStayz</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #FAF7F2;
+      color: #111827;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 24px;
+    }
+
+    .btn {
+      padding: 14px 24px;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .btn-primary {
+      background: #C46A2B;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #A85624;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid #C46A2B;
+      color: #C46A2B;
+    }
+
+    .grid {
+      display: grid;
+      gap: 32px;
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    section {
+      padding: 96px 0;
+    }
+
+    .card {
+      background: white;
+      border-radius: 24px;
+      padding: 32px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    }
+
+    footer {
+      padding: 40px 0;
+      text-align: center;
+      font-size: 14px;
+      color: #6B7280;
+    }
+
+    input {
+      padding: 16px;
+      border-radius: 12px;
+      border: none;
+      font-size: 16px;
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<section>
+  <div class="container grid grid-2">
+    <div>
+      <h1 style="font-size:48px; line-height:1.2;">
+        Turn your short-term rental into a
+        <span style="color:#C46A2B;">5-star stay</span>
+      </h1>
+
+      <p style="margin-top:24px; font-size:18px; color:#4B5563;">
+        We help Airbnb & Booking.com hosts increase bookings, maximise pricing,
+        and deliver unforgettable guest experiences — without the stress.
+      </p>
+
+      <div style="margin-top:32px; display:flex; gap:16px; flex-wrap:wrap;">
+        <a href="https://calendly.com/5starstayz/30min" target="_blank">
+          <button class="btn btn-primary">Book a Free Call</button>
+        </a>
+        <button class="btn btn-outline">Start 7-Day Free Trial</button>
+      </div>
+    </div>
+
+    <div class="card" style="background:#F3ECE3;">
+      ⭐
+      <p style="font-size:20px; font-weight:500; margin-top:16px;">
+        Optimised listings. Smarter pricing. Happier guests.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- PLATFORMS -->
+<section style="padding-top:0;">
+  <div class="container" style="text-align:center;">
+    <p style="text-transform:uppercase; letter-spacing:3px; color:#6B7280;">
+      Platforms we specialise in
+    </p>
+
+    <div style="margin-top:24px; display:flex; justify-content:center; gap:48px; flex-wrap:wrap;">
+      <img src="airbnb.png" alt="Airbnb" height="60">
+      <img src="booking.png" alt="Booking.com" height="50">
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section style="background:#F3ECE3;">
+  <div class="container">
+    <h2 style="font-size:36px; margin-bottom:48px;">Our Services</h2>
+
+    <div class="grid grid-3">
+      <div class="card">
+        <h3>Listing Optimisation</h3>
+        <p>Professional copy, photo guidance and SEO-driven optimisation.</p>
+        <button class="btn btn-primary" style="margin-top:24px;">Enquire</button>
+      </div>
+
+      <div class="card">
+        <h3>Calendar & Pricing</h3>
+        <p>Dynamic pricing and demand-based optimisation.</p>
+        <button class="btn btn-primary" style="margin-top:24px;">Enquire</button>
+      </div>
+
+      <div class="card">
+        <h3>Virtual Co-Hosting</h3>
+        <p>Guest messaging, reviews, pricing and calendars.</p>
+        <button class="btn btn-primary" style="margin-top:24px;">Enquire</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FREE TRIAL -->
+<section>
+  <div class="container grid grid-2">
+    <div>
+      <h2 style="font-size:36px;">7-Day Free Trial</h2>
+      <p style="margin-top:24px; color:#4B5563;">
+        Experience our optimisation and co-hosting approach risk-free.
+      </p>
+
+      <ul style="margin-top:32px;">
+        <li>✔ Listing health check</li>
+        <li>✔ Pricing & calendar optimisation</li>
+        <li>✔ Guest communication setup</li>
+        <li>✔ Performance roadmap</li>
+      </ul>
+
+      <button class="btn btn-primary" style="margin-top:32px;">
+        Start Free Trial
+      </button>
+    </div>
+
+    <div class="card">
+      📅
+      <p style="font-size:20px; font-weight:500; margin-top:16px;">
+        See the difference in just one week.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section style="background:#3A2A22; color:white;">
+  <div class="container" style="max-width:500px;">
+    <h2 style="font-size:36px;">Book a Strategy Call</h2>
+    <p style="color:#D1D5DB; margin-bottom:32px;">
+      Tell us about your property and goals.
+    </p>
+
+    <form style="display:grid; gap:16px;">
+      <input placeholder="Name">
+      <input placeholder="Email">
+      <input placeholder="Property Location">
+      <button class="btn btn-primary">Request Booking</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="https://www.instagram.com/5starstayz/" target="_blank">
+    📷 @5starstayz
+  </a>
+  <div style="margin-top:8px;">
+    © <span id="year"></span> 5StarStayz. All rights reserved.
+  </div>
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
