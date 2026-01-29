@@ -92,9 +92,21 @@
     }
 
     /* PLATFORM LOGOS */
+    .platform-logos {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+
     .platform-logos img {
-      height: 60px;
-      width: auto;
+      width: 160px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 16px;
+      background: white;
+      padding: 12px;
     }
   </style>
 </head>
@@ -139,7 +151,7 @@
       Platforms we specialise in
     </p>
 
-    <div class="platform-logos" style="margin-top:24px; display:flex; justify-content:center; gap:48px; flex-wrap:wrap;">
+    <div class="platform-logos">
       <img src="airbnb.png" alt="Airbnb">
       <img src="booking.png" alt="Booking.com">
     </div>
@@ -236,5 +248,3 @@
 
 </body>
 </html>
-
-
