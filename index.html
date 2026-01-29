@@ -103,10 +103,16 @@
     .platform-logos img {
       width: 160px;
       height: 80px;
-      object-fit: cover;
+      object-fit: contain; /* keeps logos sharp */
       border-radius: 16px;
       background: white;
       padding: 12px;
+    }
+
+    /* Booking logo fine-tuning */
+    .platform-logos img.booking {
+      padding: 18px;          /* more breathing room */
+      transform: scale(0.92); /* slightly smaller B */
     }
   </style>
 </head>
@@ -153,7 +159,7 @@
 
     <div class="platform-logos">
       <img src="airbnb.png" alt="Airbnb">
-      <img src="booking.png" alt="Booking.com">
+      <img src="booking.png" alt="Booking.com" class="booking">
     </div>
   </div>
 </section>
@@ -182,53 +188,6 @@
         <button class="btn btn-primary" style="margin-top:24px;">Enquire</button>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- FREE TRIAL -->
-<section>
-  <div class="container grid grid-2">
-    <div>
-      <h2 style="font-size:36px;">7-Day Free Trial</h2>
-      <p style="margin-top:24px; color:#4B5563;">
-        Experience our optimisation and co-hosting approach risk-free.
-      </p>
-
-      <ul style="margin-top:32px;">
-        <li>✔ Listing health check</li>
-        <li>✔ Pricing & calendar optimisation</li>
-        <li>✔ Guest communication setup</li>
-        <li>✔ Performance roadmap</li>
-      </ul>
-
-      <button class="btn btn-primary" style="margin-top:32px;">
-        Start Free Trial
-      </button>
-    </div>
-
-    <div class="card">
-      📅
-      <p style="font-size:20px; font-weight:500; margin-top:16px;">
-        See the difference in just one week.
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- BOOKING -->
-<section style="background:#3A2A22; color:white;">
-  <div class="container" style="max-width:500px;">
-    <h2 style="font-size:36px;">Book a Strategy Call</h2>
-    <p style="color:#D1D5DB; margin-bottom:32px;">
-      Tell us about your property and goals.
-    </p>
-
-    <form style="display:grid; gap:16px;">
-      <input placeholder="Name">
-      <input placeholder="Email">
-      <input placeholder="Property Location">
-      <button class="btn btn-primary">Request Booking</button>
-    </form>
   </div>
 </section>
 
