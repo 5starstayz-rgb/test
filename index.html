@@ -61,7 +61,6 @@
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     }
 
-    /* SERVICES: full width, one plane */
     .grid-4 {
       grid-template-columns: repeat(4, 1fr);
     }
@@ -75,8 +74,6 @@
       border-radius: 24px;
       padding: 32px;
       box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-
-      /* Ensures buttons align on same plane */
       display: flex;
       flex-direction: column;
     }
@@ -89,6 +86,39 @@
 
     .card .btn-wrapper {
       margin-top: auto;
+    }
+
+    /* FEATURED SERVICE CARD */
+    .featured {
+      background: #3A2A22;
+      color: white;
+      transform: translateY(-10px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+      position: relative;
+    }
+
+    .featured .btn-primary {
+      background: white;
+      color: #3A2A22;
+      font-weight: 600;
+    }
+
+    .featured .btn-primary:hover {
+      background: #F3ECE3;
+    }
+
+    .badge {
+      position: absolute;
+      top: -12px;
+      right: 24px;
+      background: #C46A2B;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
     }
 
     footer {
@@ -106,7 +136,6 @@
       width: 100%;
     }
 
-    /* PLATFORM LOGOS */
     .platform-logos {
       display: flex;
       justify-content: center;
@@ -165,7 +194,7 @@
   </div>
 </section>
 
-<!-- SERVICES (DOT POINTS, FULL WIDTH, BUTTONS ALIGNED) -->
+<!-- SERVICES (FEATURED MAIN OFFER) -->
 <section style="background:#F3ECE3;">
   <div class="container">
     <h2 style="font-size:36px; margin-bottom:48px;">Our Services</h2>
@@ -212,7 +241,8 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card featured">
+        <div class="badge">Most Popular</div>
         <h3>Full Service Virtual Co-Hosting</h3>
         <ul>
           <li>End-to-end guest and listing management</li>
