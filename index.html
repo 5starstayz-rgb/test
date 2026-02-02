@@ -61,9 +61,9 @@
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     }
 
-    /* NEW: all services in one plane */
-    .grid-5 {
-      grid-template-columns: repeat(5, 1fr);
+    /* SERVICES: full width, one plane */
+    .grid-4 {
+      grid-template-columns: repeat(4, 1fr);
     }
 
     section {
@@ -75,6 +75,20 @@
       border-radius: 24px;
       padding: 32px;
       box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+
+      /* Ensures buttons align on same plane */
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card ul {
+      margin-top: 12px;
+      margin-bottom: 24px;
+      padding-left: 18px;
+    }
+
+    .card .btn-wrapper {
+      margin-top: auto;
     }
 
     footer {
@@ -151,43 +165,64 @@
   </div>
 </section>
 
-<!-- SERVICES (ONE PLANE + UPDATED COPY) -->
+<!-- SERVICES (DOT POINTS, FULL WIDTH, BUTTONS ALIGNED) -->
 <section style="background:#F3ECE3;">
   <div class="container">
     <h2 style="font-size:36px; margin-bottom:48px;">Our Services</h2>
 
-    <div class="grid grid-5">
+    <div class="grid grid-4">
 
       <div class="card">
         <h3>Listing Optimisation</h3>
-        <p>Property description, design & photo guidance, message automation.</p>
-        <a href="#book">
-          <button class="btn btn-primary" style="margin-top:24px;">Enquire</button>
-        </a>
+        <ul>
+          <li>Property description</li>
+          <li>Design & photo guidance</li>
+          <li>Message automation</li>
+        </ul>
+        <div class="btn-wrapper">
+          <a href="#book">
+            <button class="btn btn-primary">Enquire</button>
+          </a>
+        </div>
       </div>
 
       <div class="card">
         <h3>Calendar & Pricing Management</h3>
-        <p>Cross-platform scheduling, personalised demand-based pricing.</p>
-        <a href="#book">
-          <button class="btn btn-primary" style="margin-top:24px;">Enquire</button>
-        </a>
+        <ul>
+          <li>Cross-platform scheduling</li>
+          <li>Personalised demand-based pricing</li>
+        </ul>
+        <div class="btn-wrapper">
+          <a href="#book">
+            <button class="btn btn-primary">Enquire</button>
+          </a>
+        </div>
       </div>
 
       <div class="card">
         <h3>Turnover Coordination</h3>
-        <p>Communication with cleaners, customised cleaning checklist.</p>
-        <a href="#book">
-          <button class="btn btn-primary" style="margin-top:24px;">Enquire</button>
-        </a>
+        <ul>
+          <li>Communication with cleaners</li>
+          <li>Customised cleaning checklist</li>
+        </ul>
+        <div class="btn-wrapper">
+          <a href="#book">
+            <button class="btn btn-primary">Enquire</button>
+          </a>
+        </div>
       </div>
 
       <div class="card">
         <h3>Full Service Virtual Co-Hosting</h3>
-        <p>End-to-end guest and listing management. Includes all of the above services.</p>
-        <a href="#book">
-          <button class="btn btn-primary" style="margin-top:24px;">Enquire</button>
-        </a>
+        <ul>
+          <li>End-to-end guest and listing management</li>
+          <li>Includes all of the above services</li>
+        </ul>
+        <div class="btn-wrapper">
+          <a href="#book">
+            <button class="btn btn-primary">Enquire</button>
+          </a>
+        </div>
       </div>
 
     </div>
@@ -226,7 +261,7 @@
   </div>
 </section>
 
-<!-- BOOKING (UPDATED FORM WITH DROPDOWN) -->
+<!-- BOOKING -->
 <section id="book" style="background:#3A2A22; color:white;">
   <div class="container" style="max-width:500px;">
     <h2 style="font-size:36px;">Book a Strategy Call</h2>
