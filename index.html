@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>5StarStayz</title>
 
+  <!-- Calendly Popup Widget -->
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+
   <style>
     body {
       margin: 0;
@@ -216,9 +220,7 @@
           <li>Message automation</li>
         </ul>
         <div class="btn-wrapper">
-          <a href="#book">
-            <button class="btn btn-primary">Enquire</button>
-          </a>
+          <button class="btn btn-primary" onclick="selectService('Listing Optimisation')">Enquire</button>
         </div>
       </div>
 
@@ -229,9 +231,7 @@
           <li>Personalised demand-based pricing</li>
         </ul>
         <div class="btn-wrapper">
-          <a href="#book">
-            <button class="btn btn-primary">Enquire</button>
-          </a>
+          <button class="btn btn-primary" onclick="selectService('Calendar & Pricing Management')">Enquire</button>
         </div>
       </div>
 
@@ -242,9 +242,7 @@
           <li>Customised cleaning checklist</li>
         </ul>
         <div class="btn-wrapper">
-          <a href="#book">
-            <button class="btn btn-primary">Enquire</button>
-          </a>
+          <button class="btn btn-primary" onclick="selectService('Turnover Coordination')">Enquire</button>
         </div>
       </div>
 
@@ -256,9 +254,7 @@
           <li>Includes all of the above services</li>
         </ul>
         <div class="btn-wrapper">
-          <a href="#book">
-            <button class="btn btn-primary">Enquire</button>
-          </a>
+          <button class="btn btn-primary" onclick="selectService('Full Service Virtual Co-Hosting')">Enquire</button>
         </div>
       </div>
 
@@ -271,38 +267,6 @@
   </div>
 </section>
 
-<!-- FREE TRIAL -->
-<section>
-  <div class="container grid grid-2">
-    <div>
-      <h2 style="font-size:36px;">7-Day Free Trial</h2>
-      <p style="margin-top:24px; color:#4B5563;">
-        Experience our optimisation and co-hosting approach risk-free.
-      </p>
-
-      <ul style="margin-top:32px;">
-        <li>✔ Listing health check</li>
-        <li>✔ Pricing & calendar optimisation</li>
-        <li>✔ Guest communication setup</li>
-        <li>✔ Performance roadmap</li>
-      </ul>
-
-      <a href="#book">
-        <button class="btn btn-primary" style="margin-top:32px;">
-          Start Free Trial
-        </button>
-      </a>
-    </div>
-
-    <div class="card">
-      📅
-      <p style="font-size:20px; font-weight:500; margin-top:16px;">
-        See the difference in just one week.
-      </p>
-    </div>
-  </div>
-</section>
-
 <!-- BOOKING -->
 <section id="book" style="background:#3A2A22; color:white;">
   <div class="container" style="max-width:500px;">
@@ -312,39 +276,11 @@
     </p>
 
     <form style="display:grid; gap:16px;">
-      <input placeholder="Name">
-      <input placeholder="Email">
+      <input id="name" placeholder="Name">
+      <input id="email" placeholder="Email">
 
-      <select>
+      <select id="service">
         <option value="" disabled selected>What service are you interested in?</option>
         <option>Listing Optimisation</option>
         <option>Calendar & Pricing Management</option>
         <option>Turnover Coordination</option>
-        <option>Full Service Virtual Co-Hosting</option>
-      </select>
-
-      <a href="https://calendly.com/5starstayz/30min" target="_blank">
-        <button type="button" class="btn btn-primary" style="width:100%;">
-          Request a Call
-        </button>
-      </a>
-    </form>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <a href="https://www.instagram.com/5starstayz/" target="_blank">
-    📷 @5starstayz
-  </a>
-  <div style="margin-top:8px;">
-    © <span id="year"></span> 5StarStayz. All rights reserved.
-  </div>
-</footer>
-
-<script>
-  document.getElementById("year").textContent = new Date().getFullYear();
-</script>
-
-</body>
-</html>
