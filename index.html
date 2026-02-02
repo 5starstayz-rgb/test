@@ -61,8 +61,9 @@
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     }
 
-    .grid-3 {
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    /* NEW: all services in one plane */
+    .grid-5 {
+      grid-template-columns: repeat(5, 1fr);
     }
 
     section {
@@ -83,7 +84,7 @@
       color: #6B7280;
     }
 
-    input {
+    input, select {
       padding: 16px;
       border-radius: 12px;
       border: none;
@@ -113,7 +114,7 @@
 
 <body>
 
-<!-- HERO (CENTRED & LARGER) -->
+<!-- HERO -->
 <section>
   <div class="container" style="text-align:center; max-width:900px;">
       <h1 style="font-size:60px; line-height:1.15;">
@@ -150,39 +151,24 @@
   </div>
 </section>
 
-<!-- SERVICES (UPDATED NAMES) -->
+<!-- SERVICES (ONE PLANE + UPDATED COPY) -->
 <section style="background:#F3ECE3;">
   <div class="container">
     <h2 style="font-size:36px; margin-bottom:48px;">Our Services</h2>
 
-    <div class="grid grid-3">
-      <div class="card">
-        <h3>Full Service Virtual Co-Hosting</h3>
-        <p>End-to-end guest and listing management.</p>
-        <a href="#book">
-          <button class="btn btn-primary" style="margin-top:24px;">Enquire</button>
-        </a>
-      </div>
+    <div class="grid grid-5">
 
       <div class="card">
         <h3>Listing Optimisation</h3>
-        <p>Professional copy, photo guidance and SEO-driven optimisation.</p>
+        <p>Property description, design & photo guidance, message automation.</p>
         <a href="#book">
           <button class="btn btn-primary" style="margin-top:24px;">Enquire</button>
         </a>
       </div>
 
       <div class="card">
-        <h3>Calendar Management</h3>
-        <p>Smart scheduling and availability control.</p>
-        <a href="#book">
-          <button class="btn btn-primary" style="margin-top:24px;">Enquire</button>
-        </a>
-      </div>
-
-      <div class="card">
-        <h3>Pricing Analysis</h3>
-        <p>Data-driven pricing to maximise revenue.</p>
+        <h3>Calendar & Pricing Management</h3>
+        <p>Cross-platform scheduling, personalised demand-based pricing.</p>
         <a href="#book">
           <button class="btn btn-primary" style="margin-top:24px;">Enquire</button>
         </a>
@@ -190,11 +176,20 @@
 
       <div class="card">
         <h3>Turnover Coordination</h3>
-        <p>Cleaning, maintenance and guest readiness.</p>
+        <p>Communication with cleaners, customised cleaning checklist.</p>
         <a href="#book">
           <button class="btn btn-primary" style="margin-top:24px;">Enquire</button>
         </a>
       </div>
+
+      <div class="card">
+        <h3>Full Service Virtual Co-Hosting</h3>
+        <p>End-to-end guest and listing management. Includes all of the above services.</p>
+        <a href="#book">
+          <button class="btn btn-primary" style="margin-top:24px;">Enquire</button>
+        </a>
+      </div>
+
     </div>
   </div>
 </section>
@@ -231,7 +226,7 @@
   </div>
 </section>
 
-<!-- BOOKING (ANCHOR ADDED HERE) -->
+<!-- BOOKING (UPDATED FORM WITH DROPDOWN) -->
 <section id="book" style="background:#3A2A22; color:white;">
   <div class="container" style="max-width:500px;">
     <h2 style="font-size:36px;">Book a Strategy Call</h2>
@@ -242,7 +237,15 @@
     <form style="display:grid; gap:16px;">
       <input placeholder="Name">
       <input placeholder="Email">
-      <input placeholder="Property Location">
+
+      <select>
+        <option value="" disabled selected>What service are you interested in?</option>
+        <option>Listing Optimisation</option>
+        <option>Calendar & Pricing Management</option>
+        <option>Turnover Coordination</option>
+        <option>Full Service Virtual Co-Hosting</option>
+      </select>
+
       <button class="btn btn-primary">Request Booking</button>
     </form>
   </div>
