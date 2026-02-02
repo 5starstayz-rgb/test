@@ -284,3 +284,48 @@
         <option>Listing Optimisation</option>
         <option>Calendar & Pricing Management</option>
         <option>Turnover Coordination</option>
+        <option>Full Service Virtual Co-Hosting</option>
+      </select>
+
+      <button type="button" class="btn btn-primary" style="width:100%;" onclick="openCalendly()">
+        Request a Call
+      </button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="https://www.instagram.com/5starstayz/" target="_blank">
+    📷 @5starstayz
+  </a>
+  <div style="margin-top:8px;">
+    © <span id="year"></span> 5StarStayz. All rights reserved.
+  </div>
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // When user clicks "Enquire" on a service, auto-select it below
+  function selectService(service) {
+    document.getElementById("service").value = service;
+    document.getElementById("book").scrollIntoView({ behavior: "smooth" });
+  }
+
+  function openCalendly() {
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const service = document.getElementById("service").value;
+
+    const calendlyUrl = "https://calendly.com/5starstayz/30min"
+      + "?name=" + encodeURIComponent(name)
+      + "&email=" + encodeURIComponent(email)
+      + "&a1=" + encodeURIComponent(service); 
+
+    Calendly.initPopupWidget({ url: calendlyUrl });
+  }
+</script>
+
+</body>
+</html>
