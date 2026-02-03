@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -605,12 +606,32 @@
 
     .about-bubble p:last-child { margin-bottom: 0; }
 
+    /* ======= NEW: About profile layout ======= */
+    .about-content{
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 22px;
+      align-items: start;
+      margin-top: 8px;
+    }
+
+    .profile-pic{
+      width: 110px;
+      height: 110px;
+      border-radius: 999px;
+      object-fit: cover;
+      border: 3px solid rgba(196, 106, 43, 0.22);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.12);
+      background: #fff;
+    }
+
     /* ======= Reviews grid ======= */
     .review-images {
       margin-top: 28px;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
+      gap: 22px; /* increased to add horizontal + vertical spacing */
+      column-gap: 26px; /* extra horizontal separation so they don't feel crammed */
     }
 
     .review-images img {
@@ -631,6 +652,32 @@
       box-shadow: 0 16px 34px rgba(0,0,0,0.14);
     }
 
+    /* ======= NEW: Instagram link with icon ======= */
+    .social-link{
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(17, 24, 39, 0.10);
+      background: rgba(255,255,255,0.65);
+      color: #111827;
+      transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+    }
+
+    .social-link:hover{
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.9);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+    }
+
+    .social-link img{
+      width: 18px;
+      height: 18px;
+      object-fit: contain;
+      display: block;
+    }
+
     /* Responsive tweak for 4-column services grid */
     @media (max-width: 1100px) {
       .grid-4 { grid-template-columns: repeat(2, 1fr); }
@@ -649,6 +696,15 @@
       .about-bubble { padding: 28px; }
 
       .menu-panel{ min-width: 210px; }
+
+      /* stack profile + text on mobile */
+      .about-content{
+        grid-template-columns: 1fr;
+      }
+      .profile-pic{
+        width: 96px;
+        height: 96px;
+      }
     }
   </style>
 </head>
@@ -844,19 +900,26 @@
         <span class="about-pill">Founder</span>
       </div>
 
-      <p class="lead">Hi, I’m Sam — founder of 5StarStayz.</p>
+      <div class="about-content">
+        <!-- NEW: circular profile picture -->
+        <img class="profile-pic" src="profilepic.png" alt="Sam profile picture">
 
-      <p>
-        Born and raised in Wollongong, I originally studied a Bachelor of Science in Sydney before realising I thrive in hands-on environments. That led me into the trades, where I explored carpentry, plumbing, and electrical — ultimately completing a four-year electrical apprenticeship.
-      </p>
+        <div>
+          <p class="lead">Hi, I’m Sam — founder of 5StarStayz.</p>
 
-      <p>
-        My partner and I later purchased a luxury apartment in Wollongong’s CBD. What started as an Airbnb experiment quickly became a passion. After moving out permanently, we successfully operated the property across multiple platforms for over three years — achieving between 200–300% of traditional rental returns.
-      </p>
+          <p>
+            Born and raised in Wollongong, I originally studied a Bachelor of Science in Sydney before realising I thrive in hands-on environments. That led me into the trades, where I explored carpentry, plumbing, and electrical — ultimately completing a four-year electrical apprenticeship.
+          </p>
 
-      <p>
-        Today, I help property owners do the same: maximise revenue, simplify hosting, and turn their properties into standout short-stay rentals without the stress.
-      </p>
+          <p>
+            My partner and I later purchased a luxury apartment in Wollongong’s CBD. What started as an Airbnb experiment quickly became a passion. After moving out permanently, we successfully operated the property across multiple platforms for over three years — achieving between 200–300% of traditional rental returns.
+          </p>
+
+          <p>
+            Today, I help property owners do the same: maximise revenue, simplify hosting, and turn their properties into standout short-stay rentals without the stress.
+          </p>
+        </div>
+      </div>
     </div>
 
     <div class="review-images">
@@ -899,10 +962,13 @@
 
 <!-- FOOTER -->
 <footer>
-  <a href="https://www.instagram.com/5starstayz/" target="_blank">
-    📷 @5starstayz
+  <!-- NEW: instagram icon via instagram.png -->
+  <a class="social-link" href="https://www.instagram.com/5starstayz/" target="_blank" rel="noopener">
+    <img src="instagram.png" alt="Instagram">
+    <span>@5starstayz</span>
   </a>
-  <div style="margin-top:8px;">
+
+  <div style="margin-top:10px;">
     © <span id="year"></span> 5StarStayz. All rights reserved.
   </div>
 </footer>
@@ -966,3 +1032,4 @@
 
 </body>
 </html>
+```
