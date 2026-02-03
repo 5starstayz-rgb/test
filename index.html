@@ -5,20 +5,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>5StarStayz</title>
 
+  <!-- Luxury heading font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
   <!-- Calendly Popup Widget -->
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
   <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 
   <style>
+    :root{
+      --accent: #C46A2B;
+      --ink: #111827;
+      --cream: #FAF7F2;
+      --hero-max: 1100px;
+    }
+
     body {
       margin: 0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: #FAF7F2;
       color: #111827;
       line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
-    h1, h2, h3 { margin: 0; }
+    /* Luxury headings */
+    h1, h2, h3 {
+      margin: 0;
+      font-family: "Playfair Display", ui-serif, Georgia, serif;
+      letter-spacing: -0.02em;
+    }
 
     a {
       color: inherit;
@@ -37,18 +56,28 @@
       border: none;
       cursor: pointer;
       font-size: 16px;
+      transition: transform .15s ease, box-shadow .15s ease, background .15s ease, border-color .15s ease;
     }
 
     .btn-primary {
       background: #C46A2B;
       color: white;
+      box-shadow: 0 14px 34px rgba(0,0,0,0.22);
     }
-    .btn-primary:hover { background: #A85624; }
+    .btn-primary:hover {
+      background: #A85624;
+      transform: translateY(-2px);
+      box-shadow: 0 18px 44px rgba(0,0,0,0.28);
+    }
 
     .btn-outline {
       background: transparent;
-      border: 2px solid #C46A2B;
-      color: #C46A2B;
+      border: 2px solid rgba(255,255,255,0.55);
+      color: #fff;
+    }
+    .btn-outline:hover {
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.08);
     }
 
     .grid { display: grid; gap: 32px; }
@@ -87,7 +116,7 @@
       color: #3A2A22;
       font-weight: 600;
     }
-    .featured .btn-primary:hover { background: #F3ECE3; }
+    .featured .btn-primary:hover { background: #F3ECE3; transform: translateY(-2px); }
 
     .badge {
       position: absolute;
@@ -154,6 +183,151 @@
       max-width: 560px;
       margin: 16px auto 0;
       padding-left: 18px;
+    }
+
+    /* ===== HERO BANNER ===== */
+    .hero {
+      position: relative;
+      min-height: 86vh;
+      display: flex;
+      align-items: center;
+      padding: 36px 0 54px;
+      color: #fff;
+      overflow: hidden;
+    }
+
+    /* Background image */
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: url("banner.png") center/cover no-repeat;
+      transform: scale(1.03);
+      filter: contrast(1.05) saturate(1.05);
+    }
+
+    /* Overlay for readability + luxury mood */
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(900px 600px at 70% 20%, rgba(0,0,0,0.20), transparent 55%),
+        linear-gradient(180deg, rgba(0,0,0,0.55), rgba(0,0,0,0.35) 40%, rgba(18,12,10,0.70));
+    }
+
+    /* Subtle film grain */
+    .hero .grain{
+      pointer-events:none;
+      position:absolute;
+      inset:-20%;
+      opacity: 0.10;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E");
+      mix-blend-mode: overlay;
+    }
+
+    /* Hero content */
+    .hero .container{
+      position: relative;
+      z-index: 1;
+      max-width: var(--hero-max);
+    }
+
+    .hero-topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 18px;
+      padding: 12px 0 22px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 13px;
+      opacity: 0.95;
+    }
+
+    .hero-nav{
+      display:flex;
+      gap: 18px;
+      font-size: 14px;
+      opacity: 0.9;
+    }
+
+    .hero-nav a{
+      padding: 8px 10px;
+      border-radius: 999px;
+      transition: background .15s ease, opacity .15s ease;
+    }
+
+    .hero-nav a:hover{
+      background: rgba(255,255,255,0.10);
+      opacity: 1;
+    }
+
+    .hero-card{
+      margin-top: 14px;
+      padding: 34px 34px;
+      border-radius: 26px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(17, 24, 39, 0.28);
+      backdrop-filter: blur(12px);
+      box-shadow:
+        0 22px 70px rgba(0,0,0,0.35),
+        0 0 0 1px rgba(255,255,255,0.08) inset;
+    }
+
+    .hero h1{
+      font-size: clamp(44px, 5vw, 64px);
+      line-height: 1.05;
+      margin: 0;
+    }
+
+    .hero .sub{
+      margin-top: 18px;
+      font-size: 18px;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.86);
+      max-width: 62ch;
+    }
+
+    .hero .cta-row{
+      margin-top: 26px;
+      display:flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .hero-trust{
+      margin-top: 16px;
+      display:flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      color: rgba(255,255,255,0.78);
+      font-size: 14px;
+    }
+
+    .hero-trust span{
+      display:inline-flex;
+      gap: 8px;
+      align-items:center;
+    }
+
+    .hero-trust .dot{
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 6px rgba(196,106,43,0.22);
+    }
+
+    .section-after-hero{
+      padding-top: 56px !important;
     }
 
     /* ======= Trial section styling ======= */
@@ -323,7 +497,6 @@
       overflow: hidden;
     }
 
-    /* Accent bar */
     .about-bubble::before {
       content: "";
       position: absolute;
@@ -364,9 +537,9 @@
 
     .about-bubble p {
       margin: 0 0 14px 0;
-      color: #1F2937; /* darker */
-      font-size: 17px; /* slightly larger */
-      max-width: 72ch; /* nicer line length */
+      color: #1F2937;
+      font-size: 17px;
+      max-width: 72ch;
     }
 
     .about-bubble p:last-child { margin-bottom: 0; }
@@ -383,12 +556,12 @@
       width: 100%;
       aspect-ratio: 4 / 3;
       max-height: 360px;
-      object-fit: contain; /* prevents cutting off screenshot text */
+      object-fit: contain;
       border-radius: 18px;
       background: white;
       box-shadow: 0 12px 28px rgba(0,0,0,0.10);
       border: 1px solid rgba(17, 24, 39, 0.08);
-      padding: 10px; /* gives screenshots breathing room */
+      padding: 10px;
       transition: transform .18s ease, box-shadow .18s ease;
     }
 
@@ -403,7 +576,10 @@
     }
 
     @media (max-width: 640px) {
-      h1 { font-size: 44px !important; }
+      .hero { min-height: 82vh; }
+      .hero-card { padding: 24px; }
+      .hero-nav { display: none; }
+
       .grid-4 { grid-template-columns: 1fr; }
       section { padding: 72px 0; }
       .trial-title { font-size: 30px; }
@@ -416,31 +592,50 @@
 
 <body>
 
-<!-- HERO -->
-<section>
-  <div class="container" style="text-align:center; max-width:900px;">
-      <h1 style="font-size:60px; line-height:1.15;">
+<!-- HERO (BANNER) -->
+<section class="hero">
+  <div class="grain"></div>
+
+  <div class="container">
+    <div class="hero-topbar">
+      <div class="brand">
+        <span style="width:10px;height:10px;border-radius:999px;background:var(--accent);display:inline-block;"></span>
+        5StarStayz
+      </div>
+
+      <div class="hero-nav">
+        <a href="#services">Services</a>
+        <a href="#trial">7-Day Trial</a>
+        <a href="#book">Book a Call</a>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <h1>
         Turn your investment property into a
-        <span style="color:#C46A2B;">5-star stay</span>
+        <span style="color:var(--accent);">5-star stay</span>
       </h1>
 
-      <p style="margin-top:24px; font-size:18px; color:#4B5563;">
+      <p class="sub">
         We take the stress out of being a short-stay host while maximising revenue and delivering unforgettable guest experiences.
       </p>
 
-      <div style="margin-top:32px; display:flex; gap:16px; flex-wrap:wrap; justify-content:center;">
-        <a href="#book">
-          <button class="btn btn-primary">Book a Free Call</button>
-        </a>
-        <a href="#trial">
-          <button class="btn btn-outline">Start 7-Day Free Trial</button>
-        </a>
+      <div class="cta-row">
+        <a href="#book"><button class="btn btn-primary">Book a Free Call</button></a>
+        <a href="#trial"><button class="btn btn-outline">Start 7-Day Free Trial</button></a>
       </div>
+
+      <div class="hero-trust">
+        <span><span class="dot"></span>Premium guest experience</span>
+        <span><span class="dot"></span>Revenue-focused strategy</span>
+        <span><span class="dot"></span>Stress-free systems</span>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- PLATFORMS -->
-<section style="padding-top:0;">
+<section class="section-after-hero" style="padding-top:0;">
   <div class="container" style="text-align:center;">
     <p style="text-transform:uppercase; letter-spacing:3px; color:#6B7280;">
       Platforms we specialise in
@@ -454,7 +649,7 @@
 </section>
 
 <!-- SERVICES -->
-<section style="background:#F3ECE3;">
+<section id="services" style="background:#F3ECE3;">
   <div class="container">
     <h2 style="font-size:36px; margin-bottom:48px;">Our Services</h2>
 
