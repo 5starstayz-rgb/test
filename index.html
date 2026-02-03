@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -606,7 +605,7 @@
 
     .about-bubble p:last-child { margin-bottom: 0; }
 
-    /* ======= NEW: About profile layout ======= */
+    /* ======= About profile layout ======= */
     .about-content{
       display: grid;
       grid-template-columns: 120px 1fr;
@@ -615,14 +614,22 @@
       margin-top: 8px;
     }
 
+    /* ✅ UPDATED: crisp profile image rendering */
     .profile-pic{
-      width: 110px;
-      height: 110px;
+      width: 112px;
+      height: 112px;
+      display: block;
       border-radius: 999px;
       object-fit: cover;
+      object-position: center;
       border: 3px solid rgba(196, 106, 43, 0.22);
       box-shadow: 0 14px 30px rgba(0,0,0,0.12);
       background: #fff;
+
+      /* reduce “soft” sampling / compositing blur */
+      transform: translateZ(0);
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
     }
 
     /* ======= Reviews grid ======= */
@@ -630,8 +637,8 @@
       margin-top: 28px;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 22px; /* increased to add horizontal + vertical spacing */
-      column-gap: 26px; /* extra horizontal separation so they don't feel crammed */
+      gap: 22px;
+      column-gap: 26px;
     }
 
     .review-images img {
@@ -652,7 +659,7 @@
       box-shadow: 0 16px 34px rgba(0,0,0,0.14);
     }
 
-    /* ======= NEW: Instagram link with icon ======= */
+    /* ======= Instagram link with icon ======= */
     .social-link{
       display: inline-flex;
       align-items: center;
@@ -901,8 +908,17 @@
       </div>
 
       <div class="about-content">
-        <!-- NEW: circular profile picture -->
-        <img class="profile-pic" src="profilepic.png" alt="Sam profile picture">
+        <!-- ✅ UPDATED: size + srcset for crispness -->
+        <img
+          class="profile-pic"
+          src="profilepic.png"
+          srcset="profilepic.png 1x, profilepic@2x.png 2x"
+          width="112"
+          height="112"
+          alt="Sam profile picture"
+          loading="lazy"
+          decoding="async"
+        >
 
         <div>
           <p class="lead">Hi, I’m Sam — founder of 5StarStayz.</p>
@@ -962,7 +978,6 @@
 
 <!-- FOOTER -->
 <footer>
-  <!-- NEW: instagram icon via instagram.png -->
   <a class="social-link" href="https://www.instagram.com/5starstayz/" target="_blank" rel="noopener">
     <img src="instagram.png" alt="Instagram">
     <span>@5starstayz</span>
@@ -1032,4 +1047,4 @@
 
 </body>
 </html>
-```
+
