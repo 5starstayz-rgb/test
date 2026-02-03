@@ -187,6 +187,7 @@
       padding: 36px 0 54px;
       color: #fff;
       overflow: hidden;
+      z-index: 0; /* creates stacking context */
     }
 
     /* Background image */
@@ -197,6 +198,7 @@
       background: url("banner.png") center/cover no-repeat;
       transform: scale(1.03);
       filter: contrast(1.05) saturate(1.05);
+      z-index: 0;
     }
 
     /* Overlay for readability + luxury mood */
@@ -207,6 +209,7 @@
       background:
         radial-gradient(900px 600px at 70% 20%, rgba(0,0,0,0.20), transparent 55%),
         linear-gradient(180deg, rgba(0,0,0,0.55), rgba(0,0,0,0.35) 40%, rgba(18,12,10,0.70));
+      z-index: 0;
     }
 
     /* Subtle film grain */
@@ -217,12 +220,13 @@
       opacity: 0.10;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E");
       mix-blend-mode: overlay;
+      z-index: 1;
     }
 
     /* Hero content */
     .hero .container{
       position: relative;
-      z-index: 1;
+      z-index: 2;
       max-width: var(--hero-max);
     }
 
@@ -232,6 +236,8 @@
       justify-content:space-between;
       gap: 18px;
       padding: 12px 0 22px;
+      position: relative;
+      z-index: 9999; /* ensure menu sits above hero-card */
     }
 
     /* Bigger brand (and no dot by default) */
@@ -242,15 +248,18 @@
       font-weight: 800;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      font-size: 18px;                 /* bigger */
+      font-size: 18px;
       opacity: 0.98;
-      font-family: "Playfair Display", ui-serif, Georgia, serif; /* more premium */
+      font-family: "Playfair Display", ui-serif, Georgia, serif;
     }
 
-    .brand .brand-dot{ display:none; } /* dot removed */
+    .brand .brand-dot{ display:none; }
 
     /* ======= HAMBURGER MENU (top right) ======= */
-    .menu-wrap{ position: relative; }
+    .menu-wrap{
+      position: relative;
+      z-index: 99999; /* above hero bubble */
+    }
 
     .menu-btn{
       width: 46px;
@@ -323,6 +332,7 @@
       backdrop-filter: blur(14px);
       box-shadow: 0 28px 80px rgba(0,0,0,0.38);
       display: none;
+      z-index: 999999; /* keep above EVERYTHING in hero */
     }
 
     .menu-wrap.open .menu-panel{ display: block; }
@@ -359,6 +369,8 @@
       box-shadow:
         0 22px 70px rgba(0,0,0,0.35),
         0 0 0 1px rgba(255,255,255,0.08) inset;
+      position: relative;
+      z-index: 2; /* below menu */
     }
 
     .hero h1{
@@ -374,8 +386,6 @@
       color: rgba(255,255,255,0.86);
       max-width: 62ch;
     }
-
-    /* Removed hero CTAs + dot points, so no CTA row / trust row needed */
 
     .section-after-hero{
       padding-top: 56px !important;
@@ -486,7 +496,7 @@
       margin-top: 26px;
       display: flex;
       gap: 14px;
-      justify-content: center;
+      justify-content: center; /* centered */
       flex-wrap: wrap;
     }
 
@@ -629,8 +639,6 @@
     @media (max-width: 640px) {
       .hero { min-height: 82vh; }
       .hero-card { padding: 24px; }
-
-      /* brand still prominent but not ridiculous on mobile */
       .brand { font-size: 16px; letter-spacing: 0.07em; }
 
       .grid-4 { grid-template-columns: 1fr; }
@@ -690,11 +698,6 @@
       <p class="sub">
         We take the stress out of being a short-stay host while maximising revenue and delivering unforgettable guest experiences.
       </p>
-
-      <!-- Removed:
-           - Book a Free Call / Start 7-Day Free Trial buttons
-           - Dot point trust row
-      -->
     </div>
   </div>
 </section>
@@ -812,10 +815,6 @@
       <div class="trial-cta-row">
         <button class="btn btn-trial" onclick="startTrial()">
           Start 7-Day Free Trial
-        </button>
-
-        <button class="btn btn-primary" onclick="selectService('Full Service Virtual Co-Hosting')">
-          Or Enquire About Co-Hosting
         </button>
       </div>
 
@@ -937,7 +936,6 @@
   // ======= Menu logic =======
   const menuWrap = document.getElementById("menuWrap");
   const menuBtn = document.getElementById("menuBtn");
-  const menuPanel = document.getElementById("menuPanel");
 
   function openMenu() {
     menuWrap.classList.add("open");
