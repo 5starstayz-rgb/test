@@ -18,14 +18,8 @@
       line-height: 1.6;
     }
 
-    h1, h2, h3 {
-      margin: 0;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+    h1, h2, h3 { margin: 0; }
+    a { color: inherit; text-decoration: none; }
 
     .container {
       max-width: 1200px;
@@ -33,12 +27,15 @@
       padding: 0 24px;
     }
 
+    section { padding: 96px 0; }
+
     .btn {
       padding: 14px 24px;
       border-radius: 12px;
       border: none;
       cursor: pointer;
       font-size: 16px;
+      transition: all 0.2s ease;
     }
 
     .btn-primary {
@@ -48,6 +45,8 @@
 
     .btn-primary:hover {
       background: #A85624;
+      transform: translateY(-1px);
+      box-shadow: 0 12px 25px rgba(196,106,43,0.25);
     }
 
     .btn-outline {
@@ -56,22 +55,13 @@
       color: #C46A2B;
     }
 
-    .grid {
-      display: grid;
-      gap: 32px;
+    .btn-outline:hover {
+      background: rgba(196,106,43,0.08);
+      transform: translateY(-1px);
     }
 
-    .grid-2 {
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    }
-
-    .grid-4 {
-      grid-template-columns: repeat(4, 1fr);
-    }
-
-    section {
-      padding: 96px 0;
-    }
+    .grid { display: grid; gap: 32px; }
+    .grid-4 { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
 
     .card {
       background: white;
@@ -82,32 +72,12 @@
       flex-direction: column;
     }
 
-    .card ul {
-      margin-top: 12px;
-      margin-bottom: 24px;
-      padding-left: 18px;
-    }
-
-    .card .btn-wrapper {
-      margin-top: auto;
-    }
-
     .featured {
       background: #3A2A22;
       color: white;
       transform: translateY(-10px);
       box-shadow: 0 15px 35px rgba(0,0,0,0.15);
       position: relative;
-    }
-
-    .featured .btn-primary {
-      background: white;
-      color: #3A2A22;
-      font-weight: 600;
-    }
-
-    .featured .btn-primary:hover {
-      background: #F3ECE3;
     }
 
     .badge {
@@ -120,40 +90,7 @@
       border-radius: 999px;
       font-size: 12px;
       font-weight: 600;
-      letter-spacing: 1px;
       text-transform: uppercase;
-    }
-
-    footer {
-      padding: 40px 0;
-      text-align: center;
-      font-size: 14px;
-      color: #6B7280;
-    }
-
-    input, select {
-      padding: 16px;
-      border-radius: 12px;
-      border: none;
-      font-size: 16px;
-      width: 100%;
-    }
-
-    .platform-logos {
-      display: flex;
-      justify-content: center;
-      gap: 48px;
-      flex-wrap: wrap;
-      margin-top: 24px;
-    }
-
-    .platform-logos img {
-      width: 160px;
-      height: 80px;
-      object-fit: cover;
-      border-radius: 16px;
-      background: white;
-      padding: 12px;
     }
 
     .pricing-note {
@@ -164,17 +101,123 @@
       text-align: center;
     }
 
-    .trial-box {
-      max-width: 700px;
-      margin: 64px auto 0;
-      text-align: center;
+    /* ---------- FREE TRIAL ---------- */
+
+    @keyframes trialShimmer {
+      0%   { opacity: 0.35; transform: translateX(-12%); }
+      50%  { opacity: 0.6;  transform: translateX(12%); }
+      100% { opacity: 0.35; transform: translateX(-12%); }
     }
 
-    .trial-box ul {
-      text-align: left;
-      max-width: 420px;
-      margin: 16px auto 0;
-      padding-left: 18px;
+    .trial-wrap { margin-top: 64px; }
+
+    .trial-card {
+      position: relative;
+      border-radius: 28px;
+      padding: 36px;
+      background:
+        radial-gradient(800px 200px at 20% 0%, rgba(196,106,43,0.28), transparent 60%),
+        radial-gradient(700px 240px at 85% 30%, rgba(58,42,34,0.22), transparent 60%),
+        linear-gradient(180deg, #FFFFFF 0%, #FFF7EF 100%);
+      box-shadow:
+        0 18px 45px rgba(0,0,0,0.12),
+        0 10px 25px rgba(196,106,43,0.12);
+      overflow: hidden;
+      border: 1px solid rgba(196,106,43,0.22);
+    }
+
+    .trial-card::before {
+      content: "";
+      position: absolute;
+      inset: -3px;
+      border-radius: 32px;
+      background: linear-gradient(
+        90deg,
+        rgba(196,106,43,0.35),
+        rgba(58,42,34,0.25),
+        rgba(196,106,43,0.35)
+      );
+      filter: blur(20px);
+      opacity: 0.5;
+      animation: trialShimmer 6s ease-in-out infinite;
+      z-index: 0;
+    }
+
+    .trial-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 24px;
+      grid-template-columns: 1.3fr 1fr;
+    }
+
+    .trial-left h3 {
+      font-size: 30px;
+      line-height: 1.15;
+    }
+
+    .trial-left p {
+      margin-top: 10px;
+      color: #4B5563;
+    }
+
+    .trial-badge {
+      display: inline-flex;
+      gap: 10px;
+      align-items: center;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(196,106,43,0.12);
+      border: 1px solid rgba(196,106,43,0.25);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #7A3E1C;
+      width: fit-content;
+    }
+
+    .trial-badge span {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #C46A2B;
+      box-shadow: 0 0 0 4px rgba(196,106,43,0.18);
+    }
+
+    .trial-perks {
+      background: rgba(255,255,255,0.75);
+      border-radius: 22px;
+      padding: 18px;
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .perk {
+      display: flex;
+      gap: 12px;
+      padding: 12px;
+    }
+
+    .perk + .perk {
+      border-top: 1px dashed rgba(0,0,0,0.1);
+    }
+
+    .tick {
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      background: rgba(196,106,43,0.14);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+
+    .tick svg {
+      width: 14px;
+      fill: #C46A2B;
+    }
+
+    @media (max-width: 900px) {
+      .trial-inner { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -184,37 +227,10 @@
 <!-- HERO -->
 <section>
   <div class="container" style="text-align:center; max-width:900px;">
-      <h1 style="font-size:60px; line-height:1.15;">
-        Turn your investment property into a
-        <span style="color:#C46A2B;">5-star stay</span>
-      </h1>
-
-      <p style="margin-top:24px; font-size:18px; color:#4B5563;">
-        We take the stress out of being a short-stay host while maximising revenue and delivering unforgettable guest experiences.
-      </p>
-
-      <div style="margin-top:32px; display:flex; gap:16px; flex-wrap:wrap; justify-content:center;">
-        <a href="#book">
-          <button class="btn btn-primary">Book a Free Call</button>
-        </a>
-        <a href="#book">
-          <button class="btn btn-outline">Start 7-Day Free Trial</button>
-        </a>
-      </div>
-  </div>
-</section>
-
-<!-- PLATFORMS -->
-<section style="padding-top:0;">
-  <div class="container" style="text-align:center;">
-    <p style="text-transform:uppercase; letter-spacing:3px; color:#6B7280;">
-      Platforms we specialise in
+    <h1 style="font-size:60px;">Turn your investment property into a <span style="color:#C46A2B;">5-star stay</span></h1>
+    <p style="margin-top:24px; color:#4B5563;">
+      We take the stress out of being a short-stay host while maximising revenue.
     </p>
-
-    <div class="platform-logos">
-      <img src="airbnb.png" alt="Airbnb">
-      <img src="booking.png" alt="Booking.com">
-    </div>
   </div>
 </section>
 
@@ -224,65 +240,51 @@
     <h2 style="font-size:36px; margin-bottom:48px;">Our Services</h2>
 
     <div class="grid grid-4">
-
-      <div class="card">
-        <h3>Listing Optimisation</h3>
-        <ul>
-          <li>Property description</li>
-          <li>Design & photo guidance</li>
-          <li>Message automation</li>
-        </ul>
-        <div class="btn-wrapper">
-          <button class="btn btn-primary" onclick="selectService('Listing Optimisation')">Enquire</button>
-        </div>
-      </div>
-
-      <div class="card">
-        <h3>Calendar & Pricing Management</h3>
-        <ul>
-          <li>Cross-platform scheduling</li>
-          <li>Personalised demand-based pricing</li>
-        </ul>
-        <div class="btn-wrapper">
-          <button class="btn btn-primary" onclick="selectService('Calendar & Pricing Management')">Enquire</button>
-        </div>
-      </div>
-
-      <div class="card">
-        <h3>Turnover Coordination</h3>
-        <ul>
-          <li>Communication with cleaners</li>
-          <li>Customised cleaning checklist</li>
-        </ul>
-        <div class="btn-wrapper">
-          <button class="btn btn-primary" onclick="selectService('Turnover Coordination')">Enquire</button>
-        </div>
-      </div>
-
+      <div class="card"><h3>Listing Optimisation</h3></div>
+      <div class="card"><h3>Calendar & Pricing</h3></div>
+      <div class="card"><h3>Turnover Coordination</h3></div>
       <div class="card featured">
         <div class="badge">Most Popular</div>
         <h3>Full Service Virtual Co-Hosting</h3>
-        <ul>
-          <li>End-to-end guest and listing management</li>
-          <li>Includes all of the above services</li>
-        </ul>
-        <div class="btn-wrapper">
-          <button class="btn btn-primary" onclick="selectService('Full Service Virtual Co-Hosting')">Enquire</button>
-        </div>
       </div>
-
     </div>
 
-    <!-- 7 DAY FREE TRIAL -->
-    <div class="card trial-box">
-      <h3 style="font-size:28px;">7-Day Free Trial</h3>
-      <p style="margin-top:8px;">Trial our services risk-free!</p>
+    <!-- FREE TRIAL -->
+    <div class="trial-wrap">
+      <div class="trial-card">
+        <div class="trial-inner">
 
-      <ul>
-        <li>Short stay eligibility & potential (if your property is not already listed)</li>
-        <li>Listing health check</li>
-        <li>Performance Roadmap</li>
-      </ul>
+          <div class="trial-left">
+            <div class="trial-badge"><span></span> 7-Day Free Trial</div>
+            <h3 style="margin-top:16px;">
+              Trial our services risk-free — and unlock your property’s potential.
+            </h3>
+            <p>No obligation. Just clarity, insights, and a clear performance roadmap.</p>
+          </div>
+
+          <div class="trial-perks">
+            <div class="perk">
+              <div class="tick">
+                <svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12 3.4 13.4 9 19 21 7 19.6 5.6z"/></svg>
+              </div>
+              Short stay eligibility & potential
+            </div>
+            <div class="perk">
+              <div class="tick">
+                <svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12 3.4 13.4 9 19 21 7 19.6 5.6z"/></svg>
+              </div>
+              Listing health check
+            </div>
+            <div class="perk">
+              <div class="tick">
+                <svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12 3.4 13.4 9 19 21 7 19.6 5.6z"/></svg>
+              </div>
+              Performance roadmap
+            </div>
+          </div>
+
+        </div>
+      </div>
     </div>
 
     <p class="pricing-note">
@@ -291,65 +293,6 @@
 
   </div>
 </section>
-
-<!-- BOOKING -->
-<section id="book" style="background:#3A2A22; color:white;">
-  <div class="container" style="max-width:500px;">
-    <h2 style="font-size:36px;">Book a Strategy Call</h2>
-    <p style="color:#D1D5DB; margin-bottom:32px;">
-      Tell us about your property and goals.
-    </p>
-
-    <form style="display:grid; gap:16px;">
-      <input id="name" placeholder="Name">
-      <input id="email" placeholder="Email">
-
-      <select id="service">
-        <option value="" disabled selected>What service are you interested in?</option>
-        <option>Listing Optimisation</option>
-        <option>Calendar & Pricing Management</option>
-        <option>Turnover Coordination</option>
-        <option>Full Service Virtual Co-Hosting</option>
-      </select>
-
-      <button type="button" class="btn btn-primary" style="width:100%;" onclick="openCalendly()">
-        Request a Call
-      </button>
-    </form>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <a href="https://www.instagram.com/5starstayz/" target="_blank">
-    📷 @5starstayz
-  </a>
-  <div style="margin-top:8px;">
-    © <span id="year"></span> 5StarStayz. All rights reserved.
-  </div>
-</footer>
-
-<script>
-  document.getElementById("year").textContent = new Date().getFullYear();
-
-  function selectService(service) {
-    document.getElementById("service").value = service;
-    document.getElementById("book").scrollIntoView({ behavior: "smooth" });
-  }
-
-  function openCalendly() {
-    const name = document.getElementById("name").value;
-    const email = document.getElementById("email").value;
-    const service = document.getElementById("service").value;
-
-    const calendlyUrl = "https://calendly.com/5starstayz/30min"
-      + "?name=" + encodeURIComponent(name)
-      + "&email=" + encodeURIComponent(email)
-      + "&a1=" + encodeURIComponent(service); 
-
-    Calendly.initPopupWidget({ url: calendlyUrl });
-  }
-</script>
 
 </body>
 </html>
