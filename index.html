@@ -92,7 +92,6 @@
       margin-top: auto;
     }
 
-    /* FEATURED SERVICE CARD */
     .featured {
       background: #3A2A22;
       color: white;
@@ -162,6 +161,20 @@
       font-size: 14px;
       color: #6B7280;
       font-style: italic;
+      text-align: center;
+    }
+
+    .trial-box {
+      max-width: 700px;
+      margin: 64px auto 0;
+      text-align: center;
+    }
+
+    .trial-box ul {
+      text-align: left;
+      max-width: 420px;
+      margin: 16px auto 0;
+      padding-left: 18px;
     }
   </style>
 </head>
@@ -260,6 +273,18 @@
 
     </div>
 
+    <!-- 7 DAY FREE TRIAL -->
+    <div class="card trial-box">
+      <h3 style="font-size:28px;">7-Day Free Trial</h3>
+      <p style="margin-top:8px;">Trial our services risk-free!</p>
+
+      <ul>
+        <li>Short stay eligibility & potential (if your property is not already listed)</li>
+        <li>Listing health check</li>
+        <li>Performance Roadmap</li>
+      </ul>
+    </div>
+
     <p class="pricing-note">
       Pricing is tailored based on your property and goals — discussed during your strategy call.
     </p>
@@ -307,7 +332,6 @@
 <script>
   document.getElementById("year").textContent = new Date().getFullYear();
 
-  // When user clicks "Enquire" on a service, auto-select it below
   function selectService(service) {
     document.getElementById("service").value = service;
     document.getElementById("book").scrollIntoView({ behavior: "smooth" });
