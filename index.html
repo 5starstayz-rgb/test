@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -334,15 +335,59 @@
       font-size: 12px;
     }
 
+    /* ======= NEW: About section styling ======= */
+    .about-wrap {
+      max-width: 900px;
+    }
+
+    .about-bubble {
+      background: white;
+      border-radius: 24px;
+      padding: 32px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      border: 1px solid rgba(17, 24, 39, 0.06);
+    }
+
+    .about-bubble p {
+      margin: 0 0 14px 0;
+      color: #374151;
+      font-size: 16px;
+    }
+
+    .about-bubble p:last-child {
+      margin-bottom: 0;
+    }
+
+    .review-images {
+      margin-top: 32px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .review-images img {
+      width: 100%;
+      height: 100%;
+      max-height: 260px;
+      object-fit: cover;
+      border-radius: 18px;
+      background: white;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      border: 1px solid rgba(17, 24, 39, 0.06);
+    }
+
     /* Responsive tweak for 4-column services grid */
     @media (max-width: 1100px) {
       .grid-4 { grid-template-columns: repeat(2, 1fr); }
+      .review-images { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 640px) {
       h1 { font-size: 44px !important; }
       .grid-4 { grid-template-columns: 1fr; }
       section { padding: 72px 0; }
       .trial-title { font-size: 30px; }
+      .review-images { grid-template-columns: 1fr; }
+      .review-images img { max-height: 320px; }
     }
   </style>
 </head>
@@ -445,7 +490,7 @@
     <div id="trial" class="card trial-box trial-highlight">
       <div class="trial-badge">
         <span class="dot"></span>
-        Limited Offer • 100% Free
+        Limited Offer
       </div>
 
       <h3 class="trial-title">
@@ -505,38 +550,41 @@
 
   </div>
 </section>
+
 <!-- ABOUT ME -->
 <section>
-<div class="container" style="max-width:900px">
+  <div class="container about-wrap">
 
-<h2 style="font-size:36px;margin-bottom:24px">About Me</h2>
+    <h2 style="font-size:36px;margin-bottom:24px">About Me</h2>
 
-<p>Hi, I’m Sam — founder of 5StarStayz.</p>
+    <!-- Main text bubble -->
+    <div class="about-bubble">
+      <p>Hi, I’m Sam — founder of 5StarStayz.</p>
 
-<p>
-Born and raised in Wollongong, I originally studied a Bachelor of Science in Sydney before realising I thrive in hands-on environments. That led me into the trades, where I explored carpentry, plumbing, and electrical — ultimately completing a four-year electrical apprenticeship.
-</p>
+      <p>
+        Born and raised in Wollongong, I originally studied a Bachelor of Science in Sydney before realising I thrive in hands-on environments. That led me into the trades, where I explored carpentry, plumbing, and electrical — ultimately completing a four-year electrical apprenticeship.
+      </p>
 
-<p>
-My partner and I later purchased a luxury apartment in Wollongong’s CBD. What started as an Airbnb experiment quickly became a passion. After moving out permanently, we successfully operated the property across multiple platforms for over three years — achieving between 200–300% of traditional rental returns.
-</p>
+      <p>
+        My partner and I later purchased a luxury apartment in Wollongong’s CBD. What started as an Airbnb experiment quickly became a passion. After moving out permanently, we successfully operated the property across multiple platforms for over three years — achieving between 200–300% of traditional rental returns.
+      </p>
 
-<p>
-Today, I help property owners do the same: maximise revenue, simplify hosting, and turn their properties into standout short-stay rentals without the stress.
-</p>
+      <p>
+        Today, I help property owners do the same: maximise revenue, simplify hosting, and turn their properties into standout short-stay rentals without the stress.
+      </p>
+    </div>
 
-<div class="grid" style="margin-top:48px">
+    <!-- Review images (replaces text reviews) -->
+    <div class="review-images">
+      <img src="review1.png" alt="Client review 1">
+      <img src="review2.png" alt="Client review 2">
+      <img src="review3.png" alt="Client review 3">
+      <img src="review4.png" alt="Client review 4">
+    </div>
 
-<div class="review">“Sam completely transformed our listing. Bookings increased within weeks and everything now runs seamlessly.”</div>
-
-<div class="review">“Professional, responsive, and genuinely cares about guest experience. Highly recommend.”</div>
-
-<div class="review">“We were nervous starting short-stay — Sam made it effortless and profitable.”</div>
-
-</div>
-
-</div>
+  </div>
 </section>
+
 <!-- BOOKING -->
 <section id="book" style="background:#3A2A22; color:white;">
   <div class="container" style="max-width:500px;">
@@ -605,4 +653,4 @@ Today, I help property owners do the same: maximise revenue, simplify hosting, a
 
 </body>
 </html>
-
+```
