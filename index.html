@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -185,9 +186,12 @@
       color: #fff;
       overflow: hidden;
       z-index: 0; /* creates stacking context */
+
+      /* ✅ Helps mobile swipes feel intentional (prevents horizontal page scroll while swiping the hero) */
+      touch-action: pan-y;
     }
 
-    /* ✅ NEW: slider layer (replaces hero::before background image) */
+    /* slider layer */
     .hero-slider{
       position: absolute;
       inset: 0;
@@ -231,7 +235,7 @@
       z-index: 1;
     }
 
-    /* ✅ NEW: optional small dots indicator */
+    /* dots indicator */
     .hero-dots{
       position: absolute;
       left: 24px;
@@ -273,7 +277,7 @@
       z-index: 9999; /* ensure menu sits above hero-card */
     }
 
-    /* Bigger brand (and no dot by default) */
+    /* Bigger brand */
     .brand{
       display:flex;
       align-items:baseline;
@@ -510,7 +514,7 @@
       margin-top: 26px;
       display: flex;
       gap: 14px;
-      justify-content: center; /* centered */
+      justify-content: center;
       flex-wrap: wrap;
     }
 
@@ -628,7 +632,6 @@
       margin-top: 8px;
     }
 
-    /* ✅ UPDATED: crisp profile image rendering */
     .profile-pic{
       width: 112px;
       height: 112px;
@@ -639,8 +642,6 @@
       border: 3px solid rgba(196, 106, 43, 0.22);
       box-shadow: 0 14px 30px rgba(0,0,0,0.12);
       background: #fff;
-
-      /* reduce “soft” sampling / compositing blur */
       transform: translateZ(0);
       backface-visibility: hidden;
       -webkit-backface-visibility: hidden;
@@ -732,7 +733,7 @@
 
 <!-- HERO (BANNER) -->
 <section class="hero" id="hero">
-  <!-- ✅ NEW: slides (banner.png + banner1/2/3.png) -->
+  <!-- slides -->
   <div class="hero-slider" id="heroSlider" aria-hidden="true">
     <div class="hero-slide is-active" style="background-image:url('banner.png');"></div>
     <div class="hero-slide" style="background-image:url('banner1.png');"></div>
@@ -742,7 +743,7 @@
 
   <div class="grain"></div>
 
-  <!-- ✅ NEW: little dot indicators (optional, but nice) -->
+  <!-- dots indicator -->
   <div class="hero-dots" id="heroDots" aria-label="Hero image indicator">
     <span class="hero-dot is-active" aria-hidden="true"></span>
     <span class="hero-dot" aria-hidden="true"></span>
@@ -1071,10 +1072,11 @@
     if (e.key === "Escape") closeMenu();
   });
 
-  // ======= ✅ Hero Slider logic (15s) =======
+  // ======= ✅ Hero Slider logic (5s) + Swipe on mobile =======
   (function initHeroSlider(){
-    const SLIDE_MS = 15000; // 15 seconds
+    const SLIDE_MS = 5000; // ✅ 5 seconds
     const slider = document.getElementById("heroSlider");
+    const hero = document.getElementById("hero");
     if (!slider) return;
 
     const slides = Array.from(slider.querySelectorAll(".hero-slide"));
@@ -1101,28 +1103,92 @@
       idx = i;
     }
 
-    // Optional: pause when tab hidden to avoid weird timing
-    let timer = setInterval(next, SLIDE_MS);
-
     function next(){
       setActive((idx + 1) % slides.length);
     }
 
+    function prev(){
+      setActive((idx - 1 + slides.length) % slides.length);
+    }
+
+    // Auto-advance timer helpers
+    let timer = null;
+    function startTimer(){
+      stopTimer();
+      timer = setInterval(next, SLIDE_MS);
+    }
+    function stopTimer(){
+      if (timer) clearInterval(timer);
+      timer = null;
+    }
+    function restartTimer(){
+      startTimer();
+    }
+
+    // Pause when tab hidden to avoid weird timing
     document.addEventListener("visibilitychange", () => {
-      if (document.hidden) {
-        clearInterval(timer);
-      } else {
-        clearInterval(timer);
-        timer = setInterval(next, SLIDE_MS);
-      }
+      if (document.hidden) stopTimer();
+      else startTimer();
     });
 
-    // If you ever want click-to-jump, just uncomment:
-    // dots.forEach((d, i) => d.addEventListener("click", () => setActive(i)));
+    // ✅ Swipe support (mobile)
+    // - swipe left: next slide
+    // - swipe right: previous slide
+    // - ignores vertical scrolling gestures
+    (function enableSwipe(){
+      if (!hero) return;
+
+      let startX = 0, startY = 0;
+      let dx = 0, dy = 0;
+      let tracking = false;
+
+      const SWIPE_THRESHOLD = 50;     // px needed to count as a swipe
+      const VERTICAL_TOLERANCE = 60;  // if user scrolls more than this, ignore
+
+      hero.addEventListener("touchstart", (e) => {
+        if (!e.touches || e.touches.length !== 1) return;
+
+        const t = e.touches[0];
+        startX = t.clientX;
+        startY = t.clientY;
+        dx = 0; dy = 0;
+        tracking = true;
+      }, { passive: true });
+
+      hero.addEventListener("touchmove", (e) => {
+        if (!tracking || !e.touches || e.touches.length !== 1) return;
+
+        const t = e.touches[0];
+        dx = t.clientX - startX;
+        dy = t.clientY - startY;
+
+        // If it's clearly a vertical scroll, stop tracking this gesture
+        if (Math.abs(dy) > VERTICAL_TOLERANCE && Math.abs(dy) > Math.abs(dx)) {
+          tracking = false;
+        }
+      }, { passive: true });
+
+      hero.addEventListener("touchend", () => {
+        if (!tracking) return;
+        tracking = false;
+
+        // Must be mostly horizontal
+        if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) >= SWIPE_THRESHOLD) {
+          if (dx < 0) next();  // swipe left
+          else prev();         // swipe right
+          restartTimer();      // keep timing feeling consistent after manual swipe
+        }
+      }, { passive: true });
+    })();
+
+    // If you ever want click-to-jump, uncomment:
+    // dots.forEach((d, i) => d.addEventListener("click", () => { setActive(i); restartTimer(); }));
 
     setActive(0);
+    startTimer();
   })();
 </script>
 
 </body>
 </html>
+```
